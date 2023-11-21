@@ -1,11 +1,18 @@
 [package]
-name = "stylus-hello-world-minimal"
+name = "stylus-benchmark"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+alloy-primitives = "0.3.1"
 stylus-sdk = "0.4.1"
 wee_alloc = "0.4.5"
+stylus-toolkit = { git = "https://github.com/LimeChain/stylus-toolkit.git", branch = "main" }
+
+[[bin]]
+name = "erc20"
+path = "src/erc20_benchmark.rs"
+
 
 [features]
 export-abi = ["stylus-sdk/export-abi"]
@@ -16,8 +23,5 @@ strip = true
 lto = true
 panic = "abort"
 opt-level = "s"
-
-[lib]
-crate-type = ["lib", "cdylib"]
 
 [workspace]
