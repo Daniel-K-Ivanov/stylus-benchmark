@@ -5,25 +5,27 @@ This code repository aims to benchmark the gas costs between EVM and Stylus cont
 ## Findings
 
 ERC20 Functions
-| Function     | Stylus (WASM) | Solidity (EVM) |
-|--------------|---------------|----------------|
-| fund/mint    |  36345        | TBD    |
-| transfer     |  37417        | TBD    |
-| approve      |  31573        | TBD    |
-| transferFrom |  44683        | TBD    |
+
+| Function     | Stylus (WASM) | Solidity (Arbitrum Nova EVM) | Solidity (Shanghai EVM) |
+|--------------|---------------|-----------------------------|------------------------|
+| fund/mint    |  36345        |                             | 34123                  |
+| transfer     |  37417        |                             | 35000                  |
+| approve      |  31573        |                             | 27005                  |
+| transferFrom |  44683        |                             | 41212                  |
 
 Merkle Inclusion Proofs
-| Depth     | Stylus (WASM) | Solidity (EVM) |
-|-----------|---------------|----------------|
-| 10        |  TBD        | TBD    |
-| 100       |  TBD        | TBD    |
-| 1000      |  TBD        | TBD    |
+
+| Depth     | Stylus (WASM) | Arbitrum Nova EVM | Solidity (EVM) |
+|-----------|---------------|------------------|----------------|
+| 10        |  TBD          | TBD              | TBD            |
+| 100       |  TBD          | TBD              | TBD            |
+| 1000      |  TBD          | TBD              | TBD            |
 
 
 
 ## Reproducing the benchmarks
 
-1. Compilte the Stylus contracts
+1. Compile the Stylus contracts
 ```shell
 cargo build --package stylus-benchmark --release
 ```
