@@ -17,23 +17,21 @@ This code repository aims to benchmark the gas costs between EVM and Stylus cont
 
 |           | Stylus (WASM)    | Solidity (Shanghai EVM) |
 |-----------|------------------|-------------------------|
-| verify    |  459628          | 975582                  |
+| verify    |  459628 (-51%)   | 975582                  |
 
 
 Note:
 https://github.com/chengwenxi/Ed25519/tree/main was used for the EVM implementation of ED25519 verification
 
-Based on the benchmark results, it can be observed that there are no major improvements in the gas costs for ERC20 tokens when using the Stylus VM. This is because the majority of the gas costs in ERC20 functions come from storage operations, which are not cheaper under the Stylus VM.
-
-However, in the case of pure computations such as ED25519 verification, the Stylus VM shows significant improvement in gas costs compared to the EVM.
+- ERC20 and other contracts whose gas costs come predominantly from storage operations will not benefit greatly from Stylus contracts
+- Purely computational contracts (e.g. ED25519 verification) would benefit from Stylus as it would significantly lower the gas costs compared to an EVM implementation
+- We are observing a **~51% reduction in gas costs** in the case of a naive (non-optimised) WASM implementation of ED25519 verification compared to an EVM implementation
 
 **Important**
 
-Please note the following disclaimers:
-
 1. The code shown in this repository is for demonstration purposes only and is not production-ready. It is meant to showcase the gas cost differences between the Stylus VM and the EVM.
 
-2. The code used in the Stylus VM is a naive implementation and may not be highly optimized. It is important to consider this when interpreting the benchmark results.
+2. The code used in the Stylus VM is a naive implementation and is not optimized. It is important to consider this when interpreting the benchmark results.
 
 ## Reproducing Benchmarks
 
